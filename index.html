@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💜</title>
+     <link rel="stylesheet" href="style.css" />
+   
+</head>
+<body>
+
+    <div class="background-elements">
+        <img class="floating-flower f1" src="https://media.tenor.com/GfGfS6yXk6AAAAAi/lavender-flower.gif" alt="purple flower">
+        <img class="floating-flower f2" src="https://media.tenor.com/GfGfS6yXk6AAAAAi/lavender-flower.gif" alt="purple flower">
+        <img class="floating-flower f3" src="https://media.tenor.com/GfGfS6yXk6AAAAAi/lavender-flower.gif" alt="purple flower">
+        <img class="floating-flower f4" src="https://media.tenor.com/GfGfS6yXk6AAAAAi/lavender-flower.gif" alt="purple flower">
+    </div>
+
+
+    <div class="container" id="main-container">
+        <div class="gif-container">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Y1cGdsbHR0OWY5ZWlqdG43aGFjZG50bzh0MWh2Z2tlN3ZuMmNhOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6Ee25N9KcBPtSrJFVz/giphy.gif" alt="Cute Shy Cat">
+        </div>
+
+        <h1>Will you be my Valentine? </h1>
+
+        <div class="btn-container">
+            <button id="yesBtn" onclick="acceptLove()" style="margin-right: 90px;">YES</button>
+            <button id="noBtn" onmouseover="moveButton()">NO</button>
+        </div>
+    </div>
+
+    <div id="success-message" class="container">
+        <h3>Yay! Here's a letter from me to you.</h3>
+           <p style="text-align: justify;"> <strong>To my dearest girlfriend,</strong><br><br>   Happy Valentine's Day, my love. Thank you for being there for me when I need some encouragement. Also, thank you for all the efforts to make me happy and feel loved. I appreciate it so much. I'm sorry for not giving you attention rn. I just make something simple like this for you. I know our plans won't be able go as we planned last week. Let's go to that date next time we can. I love you so much, my love. Let's see each other soonest!</p><p>Me rn:</p>
+        <img style="height: 200px; width: 200px;" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY25weWJtbHE5cTkzZ296bDVsd2h1anliZjZ3eHpmMnFkZm83dXRsdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2SJwKLOzyg7ZvaECsf/giphy.gif" alt = "yay"><br>
+        <img style ="height: 200px; width: fit-content;" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTVhbjk1YWh4MDY1MWJ6YXg1NGU3ZDBwODF4c211aW9td2plYWR5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cbD4NSXZutjebF8cd8/giphy.gif" alt="Happy Cat">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainContainer = document.getElementById('main-container');
+        const successMessage = document.getElementById('success-message');
+        const body = document.querySelector('body');
+
+        let hasMoved = false;
+
+        function moveButton() {
+            // Get window dimensions (accounting for padding/margins)
+            const maxWidth = window.innerWidth - noBtn.offsetWidth - 40;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight - 40;
+
+            // Calculate random positions, ensuring it doesn't go off-screen
+            // Using Math.max(20, ...) ensures it doesn't get stuck right at the top/left edge
+            const randomX = Math.max(20, Math.random() * maxWidth);
+            const randomY = Math.max(20, Math.random() * maxHeight);
+
+            // Apply new position. We change position to 'fixed' so it can move anywhere on screen easily relative to the viewport
+            noBtn.style.position = 'fixed'; 
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Add a funny rotation effect when it moves
+            const randomRotate = (Math.random() - 0.5) * 40; // range -20 to +20 degrees
+            noBtn.style.transform = `rotate(${randomRotate}deg)`;
+
+            hasMoved = true;
+        }
+
+        function acceptLove() {
+            mainContainer.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Change background color slightly on success for effect
+            body.style.backgroundColor = "#e1bee7";
+            // Hide the No button forever
+            noBtn.style.display = 'none';
+        }
+
+        // Mobile support: run away on touch as well
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+    </script>
+</body>
+</html>
