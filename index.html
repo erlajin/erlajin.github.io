@@ -29,6 +29,19 @@
             <button id="noBtn" onmouseover="moveButton()">NO</button>
         </div>
     </div>
+<!-- Envelope Animation -->
+<div id="envelope-wrapper">
+    <div class="envelope">
+        <div class="envelope-top"></div>
+        <div class="envelope-body"></div>
+        <div class="letter-preview">
+            <span>💌</span>
+        </div>
+    </div>
+</div>
+
+<!-- Blooming flowers container -->
+<div id="flower-bloom"></div>
 
     <div id="success-message" class="container">
         <h3>Yay! Here's a letter from me to you.</h3>
@@ -68,21 +81,38 @@
             hasMoved = true;
         }
 
-        function acceptLove() {
-            mainContainer.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Change background color slightly on success for effect
-            body.style.backgroundColor = "#e1bee7";
-            // Hide the No button forever
-            noBtn.style.display = 'none';
-        }
+        <script>
+function acceptLove() {
+    mainContainer.style.display = 'none';
+    document.getElementById('envelope-wrapper').style.display = 'flex';
 
-        // Mobile support: run away on touch as well
-        noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moveButton();
-        });
-    </script>
+    body.style.backgroundColor = "#e1bee7";
+    noBtn.style.display = 'none';
+
+    // Show letter after envelope animation
+    setTimeout(() => {
+        document.getElementById('envelope-wrapper').style.display = 'none';
+        successMessage.style.display = 'block';
+        spawnFlowers();
+    }, 2800);
+}
+
+// Flower bloom effect
+function spawnFlowers() {
+    const bloomContainer = document.getElementById('flower-bloom');
+    const flowerURL = "https://media.tenor.com/GfGfS6yXk6AAAAAi/lavender-flower.gif";
+
+    for (let i = 0; i < 8; i++) {
+        const flower = document.createElement("img");
+        flower.src = flowerURL;
+        flower.className = "bloom";
+        flower.style.left = Math.random() * 90 + "%";
+        flower.style.top = Math.random() * 80 + "%";
+        bloomContainer.appendChild(flower);
+    }
+}
+</script>
+
 </body>
+
 </html>
