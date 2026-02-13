@@ -182,7 +182,7 @@
     justify-content: center;
     font-size: 3rem;
     opacity: 0;
-    transition: opacity 1s ease 0.8s;
+    
 }
 
 .envelope.open .letter-preview {
@@ -277,6 +277,11 @@
     display: block;
     margin: 20px auto;
 }
+
+
+/* REMOVE card-style centering from body for this screen */
+body.letter-view {
+    align-items: flex-start;
 
 
 
