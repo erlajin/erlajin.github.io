@@ -1,0 +1,133 @@
+
+        :root {
+            --primary-purple: #7b1fa2; /* Deep purple for text */
+            --light-purple-bg: #f3e5f5; /* Very pale purple background */
+            --btn-yes: #9c27b0; /* Bright purple button */
+            --btn-yes-hover: #ba68c8;
+            --btn-no: #f3ff15; /* Magentaish-purple for contrast */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--light-purple-bg);
+            /* Adding a subtle pattern overlay */
+            background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--light-purple-bg) 60%);
+            font-family: Georgia, 'Times New Roman', Times, serif; /* Slightly cuter font */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Container for background floating elements so they stay behind everything */
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Ensures they don't block clicks */
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-flower {
+            position: absolute;
+            width: 80px;
+            opacity: 0.6;
+            animation: floatAround 15s infinite linear;
+        }
+
+        /* Positioning the flowers differently */
+        .f1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .f2 { top: 70%; left: 80%; animation-delay: -5s; width: 60px;}
+        .f3 { top: 20%; left: 85%; animation-delay: -10s; width: 70px;}
+        .f4 { top: 80%; left: 15%; animation-delay: -2s; width: 50px;}
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white box to make text pop */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(123, 31, 162, 0.2); /* Purple shadow */
+            border: 2px solid #e1bee7;
+            z-index: 10; /* Ensures main content is above flowers */
+        }
+
+        h1 {
+            color: var(--primary-purple);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .gif-container img {
+            width: 220px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            position: relative; /* Important for containing the absolute No button initially */
+            min-height: 60px; /* Give space for buttons */
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #yesBtn {
+            background-color: var(--btn-yes);
+            color: white;
+            box-shadow: 0 4px 6px rgba(156, 39, 176, 0.3);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1) translateY(-3px);
+            background-color: var(--btn-yes-hover);
+            box-shadow: 0 6px 10px rgba(156, 39, 176, 0.4);
+        }
+
+        #noBtn {
+            background-color: var(--btn-no);
+            color: white;
+            box-shadow: 0 4px 6px rgba(216, 27, 96, 0.3);
+            position: absolute;
+            /* We define initial static position so it sits next to YES initially */
+            left: 55%; 
+        }
+        
+        /* The hidden success message */
+        #success-message {
+            display: none;
+            color: var(--primary-purple);
+            z-index: 10;
+        }
+        
+        #success-message img {
+            width: 280px;
+            border-radius: 15px;
+        }
