@@ -119,7 +119,100 @@
             /* We define initial static position so it sits next to YES initially */
             left: 55%; 
         }
-        
+
+/* Envelope wrapper */
+#envelope-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #f3e5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Envelope */
+.envelope {
+    position: relative;
+    width: 260px;
+    height: 180px;
+    background: #ce93d8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Envelope flap */
+.envelope-top {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    background: #ba68c8;
+    transform-origin: top;
+    animation: openEnvelope 2s forwards ease-in-out;
+}
+
+/* Envelope body */
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: #ce93d8;
+}
+
+/* Letter preview */
+.letter-preview {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    opacity: 0;
+    animation: letterRise 2s forwards 1.2s;
+}
+
+/* Animations */
+@keyframes openEnvelope {
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes letterRise {
+    to {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+}
+
+/* Flower bloom */
+#flower-bloom {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.bloom {
+    position: absolute;
+    width: 80px;
+    animation: bloom 2s ease-out forwards;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
         /* The hidden success message */
         #success-message {
             display: none;
@@ -131,3 +224,4 @@
             width: 280px;
             border-radius: 15px;
         }
+
