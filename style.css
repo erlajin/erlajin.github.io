@@ -31,13 +31,13 @@
             height: 100%;
             pointer-events: none; /* Ensures they don't block clicks */
             z-index: -1;
-            overflow: hidden;
+          
         }
 
         .floating-flower {
             position: absolute;
             width: 80px;
-            opacity: 0.6;
+            opacity: 1;
             animation: floatAround 15s infinite linear;
         }
 
@@ -278,10 +278,8 @@
     margin: 20px auto;
 }
 
-/* REMOVE card-style centering from body for this screen */
-body.letter-view {
-    align-items: flex-start;
-}
+
+
 
 
 
