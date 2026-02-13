@@ -52,64 +52,71 @@
         <img style ="height: 200px; width: fit-content;" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTVhbjk1YWh4MDY1MWJ6YXg1NGU3ZDBwODF4c211aW9td2plYWR5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cbD4NSXZutjebF8cd8/giphy.gif" alt="Happy Cat">
     </div>
 
- <script>
+<script>
 const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
 const mainContainer = document.getElementById('main-container');
 const successMessage = document.getElementById('success-message');
-const envelope = document.getElementById('envelope-wrapper');
+const envelopeWrapper = document.getElementById('envelope-wrapper');
+const envelope = document.querySelector('.envelope');
 const body = document.body;
 
-/* ---------- INITIAL TRANSITION ---------- */
+/* ---------- INITIAL STATE ---------- */
 window.onload = () => {
-    envelope.style.display = 'flex';
+    envelopeWrapper.style.display = 'flex';
+};
 
-    // After envelope opens, show Valentine question
+/* ---------- CLICK TO OPEN ENVELOPE ---------- */
+function openEnvelope() {
+    envelope.classList.add('open');
+
     setTimeout(() => {
-        envelope.style.opacity = '0';
-        envelope.style.transition = 'opacity 1s ease';
+        envelopeWrapper.style.opacity = '0';
+        envelopeWrapper.style.transition = 'opacity 1s ease';
 
         setTimeout(() => {
-            envelope.style.display = 'none';
+            envelopeWrapper.style.display = 'none';
             mainContainer.style.display = 'block';
             requestAnimationFrame(() => {
                 mainContainer.style.opacity = '1';
             });
         }, 1000);
-    }, 2500);
-};
+    }, 2200);
+}
 
 /* ---------- NO BUTTON RUN AWAY ---------- */
 function moveButton() {
     const maxWidth = window.innerWidth - noBtn.offsetWidth - 40;
     const maxHeight = window.innerHeight - noBtn.offsetHeight - 40;
 
-    const randomX = Math.max(20, Math.random() * maxWidth);
-    const randomY = Math.max(20, Math.random() * maxHeight);
-
     noBtn.style.position = 'fixed';
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
+    noBtn.style.left = Math.random() * maxWidth + 'px';
+    noBtn.style.top = Math.random() * maxHeight + 'px';
     noBtn.style.transform = `rotate(${(Math.random() - 0.5) * 40}deg)`;
 }
 
 /* ---------- YES BUTTON ---------- */
 function acceptLove() {
     mainContainer.style.display = 'none';
-    envelope.style.display = 'flex';
-    envelope.style.opacity = '1';
+
+    envelope.classList.remove('open');
+    envelopeWrapper.style.opacity = '1';
+    envelopeWrapper.style.display = 'flex';
 
     body.style.backgroundColor = "#e1bee7";
     noBtn.style.display = 'none';
 
     setTimeout(() => {
-        envelope.style.display = 'none';
+        envelope.classList.add('open');
+    }, 200);
+
+    setTimeout(() => {
+        envelopeWrapper.style.display = 'none';
         successMessage.style.display = 'block';
         spawnFlowers();
-    }, 2800);
+    }, 2600);
 }
 
-/* ---------- FLOWER BLOOM ---------- */
+/* ---------- FLOWERS ---------- */
 function spawnFlowers() {
     const bloomContainer = document.getElementById('flower-bloom');
     bloomContainer.innerHTML = "";
@@ -137,6 +144,7 @@ noBtn.addEventListener('touchstart', e => {
 </body>
 
 </html>
+
 
 
 
