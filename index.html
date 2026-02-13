@@ -9,13 +9,6 @@
 </head>
 <body>
 
-    <div class="background-elements">
-        <img class="floating-flower f1" src="https://www.freepik.com/free-vector/watercolor-purple-aster-vector-hand-drawn-sticker-element_17433018.htm#fromView=keyword&page=1&position=0&uuid=5d57bda6-0c13-4dc4-b9b2-eaf8fd224adc&query=Purple+carnation" alt="purple flower">
-        <img class="floating-flower f2" src="https://i.pinimg.com/736x/da/38/4f/da384fe6866cf59731b30c4a0f97101f.jpg" alt="purple flower">
-        <img class="floating-flower f3" src="https://i.pinimg.com/736x/da/38/4f/da384fe6866cf59731b30c4a0f97101f.jpg" alt="purple flower">
-        <img class="floating-flower f4" src="https://i.pinimg.com/736x/da/38/4f/da384fe6866cf59731b30c4a0f97101f.jpg" alt="purple flower">
-    </div>
-
 
     <div class="container" id="main-container">
         <div class="gif-container">
@@ -42,8 +35,6 @@
 </div>
     
 
-<!-- Blooming flowers container -->
-<div id="flower-bloom"></div>
 
     <div id="success-message" class="container">
         <h3>Yay! Here's a letter from me to you.</h3>
@@ -114,26 +105,10 @@ function acceptLove() {
         successMessage.style.display = 'block';
 document.body.classList.add('letter-view');
 
-        spawnFlowers();
     }, 2600);
 }
 
-/* ---------- FLOWERS ---------- */
-function spawnFlowers() {
-    const bloomContainer = document.getElementById('flower-bloom');
-    bloomContainer.innerHTML = "";
 
-    const flowerURL = "https://i.pinimg.com/736x/da/38/4f/da384fe6866cf59731b30c4a0f97101f.jpg";
-
-    for (let i = 0; i < 8; i++) {
-        const flower = document.createElement("img");
-        flower.src = flowerURL;
-        flower.className = "bloom";
-        flower.style.left = Math.random() * 90 + "%";
-        flower.style.top = Math.random() * 80 + "%";
-        bloomContainer.appendChild(flower);
-    }
-}
 
 /* Mobile support */
 noBtn.addEventListener('touchstart', e => {
@@ -146,6 +121,7 @@ noBtn.addEventListener('touchstart', e => {
 </body>
 
 </html>
+
 
 
 
