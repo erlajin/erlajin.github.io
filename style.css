@@ -7,19 +7,14 @@
             --btn-no: #f3ff15; /* Magentaish-purple for contrast */
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: var(--light-purple-bg);
-            /* Adding a subtle pattern overlay */
-            background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--light-purple-bg) 60%);
-            font-family: Georgia, 'Times New Roman', Times, serif; /* Slightly cuter font */
-            overflow: hidden;
-            position: relative;
+        body 
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--light-purple-bg);
+    background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--light-purple-bg) 60%);
+}
+;
         }
 
         /* Container for background floating elements so they stay behind everything */
@@ -34,26 +29,7 @@
           
         }
 
-        .floating-flower {
-            position: absolute;
-            width: 80px;
-            opacity: 1;
-            animation: floatAround 15s infinite linear;
-        }
-
-        /* Positioning the flowers differently */
-        .f1 { top: 10%; left: 10%; animation-delay: 0s; }
-        .f2 { top: 70%; left: 80%; animation-delay: -5s; width: 60px;}
-        .f3 { top: 20%; left: 85%; animation-delay: -10s; width: 70px;}
-        .f4 { top: 80%; left: 15%; animation-delay: -2s; width: 50px;}
-
-        @keyframes floatAround {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -50px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
-        }
-
+    
         .container {
             text-align: center;
             position: relative;
@@ -204,30 +180,7 @@
     }
 }
 
-/* Flower bloom */
-#flower-bloom {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 998;
-}
 
-.bloom {
-    position: absolute;
-    width: 80px;
-    animation: bloom 2s ease-out forwards;
-}
-
-@keyframes bloom {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
 
         /* The hidden success message */
         #success-message {
@@ -282,6 +235,7 @@
 /* REMOVE card-style centering from body for this screen */
 body.letter-view {
     align-items: flex-start;
+
 
 
 
