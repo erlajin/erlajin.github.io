@@ -112,6 +112,8 @@ function acceptLove() {
     setTimeout(() => {
         envelopeWrapper.style.display = 'none';
         successMessage.style.display = 'block';
+document.body.classList.add('letter-view');
+
         spawnFlowers();
     }, 2600);
 }
@@ -144,6 +146,7 @@ noBtn.addEventListener('touchstart', e => {
 </body>
 
 </html>
+
 
 
 
